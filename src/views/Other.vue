@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <h1>Random "{{ query }}" Unsplash Photo</h1>
-    <input
-     
-      v-model="query"
-      type="text"
-      label="search term"
-    />
-    <button  type="button" @click.prevent="searchPhoto">
-      Search
-    </button>
+    <h1>My Unsplash Photo</h1>
+  
+  
     <br />
    
-
-     <img  :src="imageUrl"/> 
+    <button @click="searchPhoto">Search</button>
+    <ul>
+        <li v-for="image in images" :key="image.id">
+           <img :src="image.id"/>
+        </li>
+    </ul> 
     <br />
 
   </div>
@@ -24,21 +21,18 @@ import unsplash_settings from "@/unsplash_settings.js";
 import axios from 'axios'
 
 export default {
-  name: 'about',
+  name: 'other',
   data() {
     return {
-    query: "mountain",
-    username: 'osoinez',
-    unsplashData: null,
+ 
+    username: 'ashbot',
+  
     images: [],
-   
+    unsplashData: null
   }
   },
   computed: {
-    imageUrl() {
-      if (this.unsplashData) return this.unsplashData.urls.regular;
-      return null;
-    },
+  
  
   },
   methods: {
@@ -47,18 +41,19 @@ export default {
       this.fetchImages()
         .then((response) => {
           this.unsplashData = response.data;
+         console.log(this.unsplashData);
         })
     },
 
     fetchImages() {
       return axios({
         method: 'get',
-        url: 'https://api.unsplash.com/photos/random',
+        url: 'https://api.unsplash.com/users/:username/likes',
         params: {
-          client_id: unsplash_settings.api_key,
-        
-          query: this.query,
-          featured: true,
+            client_id: unsplash_settings.api_key,
+            username: 'webaliser',
+       
+    
           page: 1,
          
         }
