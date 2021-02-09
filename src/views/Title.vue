@@ -65,6 +65,18 @@ export default {
         }
     }
 
+    @media all and (max-width: 650px) {
+        .title {
+            &__header { 
+                font-size: 3.5em;
+            }
+
+            &__btn {
+                margin: 2rem 1rem;
+            }
+        }
+    }
+
 </style>
 
 
