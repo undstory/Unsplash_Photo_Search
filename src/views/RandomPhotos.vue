@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
-    <h1>Random "{{ query }}" Unsplash Photo</h1>
-    <input
-     
+  <div class="random">
+    <h2 class="random__title">If you want to limit your choice, just say what you are looking for...</h2>
+    <b-form-input class="random__input"
+      size="lg"
       v-model="query"
       type="text"
-      label="search term"
-    />
+      label="search term" autofocus>
+    </b-form-input>
     <button  type="button" @click.prevent="searchPhoto">
       Search
     </button>
@@ -24,10 +24,10 @@ import unsplash_settings from "@/unsplash_settings.js";
 import axios from 'axios'
 
 export default {
-  name: 'about',
+  name: 'random-photos',
   data() {
     return {
-    query: "mountain",
+    query: "",
     username: 'osoinez',
     unsplashData: null,
     images: [],
@@ -68,10 +68,22 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss">
+
+@import "../scss/_variable.scss";
+
+.random {
+  &__title {
+    font-family: $title_font;
+    color: $gray;
+    margin: 2rem;
+    font-size: 3em;
+
+    &__input {
+      width: 50%;
+    } 
+  }
 }
+
+
 </style>

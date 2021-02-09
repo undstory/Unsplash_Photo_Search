@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <Title />
-     
+  <keep-alive>
+     <router-view></router-view>
+  </keep-alive>
+  
+    
   </div>
 </template>
 <script>
 
-import Title from '@/views/Title.vue'
+// import Home from '@/views/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    Title
+   
   }
 }
 
@@ -20,6 +23,7 @@ export default {
   #app {
     max-width: 1920px;
     margin: 0 auto;
+    text-align: center;
     height: 100vh;
   }
 </style>
