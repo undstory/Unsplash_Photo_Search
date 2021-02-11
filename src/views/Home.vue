@@ -23,6 +23,7 @@ export default {
 <style lang="scss">
 
 @import "../scss/_variable.scss";
+@import "../scss/_mixins.scss";
 
     .title {
         &__container {
@@ -42,31 +43,11 @@ export default {
         }
 
         &__btn {
-            background-color: transparent;
-            border: 3px solid $gray;
-            min-width: 15rem;
-            padding: 1rem 0;
-            font-family: $text_font;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: $gray;
-            text-transform: lowercase;
-            margin: 4rem 2rem;
-            transition: .5s ease;
-
-            &:hover {
-                background-color: #BFBFBF;
-            }
+            @include typicalBtn;
         }
 
         &__link {
-            color: $gray;
-            text-decoration: none;
-
-            &:hover {
-                color: inherit;
-                text-decoration: none;
-            }
+            @include typicalLink;
         }
 
         &__footer {
