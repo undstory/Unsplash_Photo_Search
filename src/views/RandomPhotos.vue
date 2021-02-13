@@ -5,14 +5,31 @@
       v-model="query"
       type="text"
       placeholder="city i.e."
+       @keyup.enter="searchPhoto"
       autofocus />
     <button type="button" class="random__btn" @click.prevent="searchPhoto">
       Search
     </button>
     <br />
-   
+    <div v-if="unsplashData" class="random__box">
+     
+      <b-card
+        :header="getAuthor"
+        header-tag="header"
+        header-bg-variant="dark"
+        header-text-variant="white"
+        align="center"
+        :footer="getLikes"
+        footer-tag="footer"
+        footer-bg-variant="dark"
+        footer-text-variant="white"
+       >
+      <b-card-img :src="imageUrl"></b-card-img>
+      <button class="random__download"><a class="random__link" :href="getDownload" target="_blank">Download</a></button>
+      </b-card>
 
-     <img  :src="imageUrl"/> 
+    </div>
+    <span v-else>Nothing to display</span>
     <br />
 
   </div>
@@ -28,7 +45,7 @@ export default {
     return {
     query: "",
     unsplashData: null,
-    images: [],
+    download_url: null,
   }
   },
   computed: {
@@ -36,6 +53,22 @@ export default {
       if (this.unsplashData) return this.unsplashData.urls.small;
       return null;
     },
+
+    getAuthor() {
+      if(this.unsplashData) return `Author: ${this.unsplashData.user.name}`;
+    return null;
+    },
+
+    getLikes() {
+       if(this.unsplashData) return `Likes: ${this.unsplashData.likes} 
+        Downloads: ${this.unsplashData.downloads}`;
+    return null;
+    },
+
+    getDownload() {
+       if(this.unsplashData) return this.unsplashData.links.download;
+    return null
+    }
  
   },
   methods: {
@@ -57,7 +90,8 @@ export default {
           page: 1,
         }
       })
-    }
+    },
+
   }
 };
 </script>
@@ -93,6 +127,23 @@ export default {
     min-width: 10rem;
     margin: 1rem 1rem 2rem;
     padding: .5rem;
+  }
+
+  &__download {
+    @include typicalBtn;
+    margin: 1rem;
+    padding: .5rem .2rem;
+  }
+
+  &__link {
+    @include typicalLink;
+  }
+
+  &__box {
+    width: 50%;
+    margin: 0 auto;
+    font-family: $text_font;
+    font-size: .9em;
   }
 }
 
