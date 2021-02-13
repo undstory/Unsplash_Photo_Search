@@ -7,7 +7,7 @@
     //    <router-link to="/other">Other</router-link>
     // </div>
     <router-view/>
-    <h1>Random "{{ query }}" Unsplash Photo</h1>
+    <h2>Tell me what you want to see</h2>
     <input
      
       v-model="query"

@@ -1,11 +1,12 @@
 <template>
   <div class="random">
-    <h2 class="random__title">If you want to limit your choice, just say what you are looking for... or not</h2>
+    <router-link class="random__arrow" to="/"><span class="fas fa-arrow-circle-left"></span></router-link>
+    <h2 class="random__title">If you want to limit your choice, just say what you are looking for</h2>
     <input class="random__input" 
       v-model="query"
       type="text"
       placeholder="city i.e."
-       @keyup.enter="searchPhoto"
+      @keyup.enter="searchPhoto"
       autofocus />
     <button type="button" class="random__btn" @click.prevent="searchPhoto">
       Search
@@ -29,7 +30,7 @@
       </b-card>
 
     </div>
-    <span v-else>Nothing to display</span>
+    <span v-else></span>
     <br />
 
   </div>
@@ -102,6 +103,20 @@ export default {
 @import "../scss/_mixins.scss";
 
 .random {
+  position: relative;
+
+   &__arrow {
+    position: absolute;
+    top: -2rem; 
+    right: 0;
+    
+    span {
+      @include typicalLink;
+      color: $gray;
+      font-size: 2em;
+    }
+  }
+
   &__title {
     font-family: $title_font;
     color: $gray;
