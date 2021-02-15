@@ -43,7 +43,6 @@ export default {
             this.fetchImages()
             .then((response) => {
             this.images = response.data.results;
-            console.log(this.images);
             })  
         },
 
@@ -55,7 +54,7 @@ export default {
                     client_id: unsplash_settings.api_key,
                     query: this.query,
                     page: 1,
-                    per_page: 16
+                    per_page: 15
                 }
             })
         }
@@ -84,10 +83,14 @@ export default {
 
     &__photos {
         width: 100%;
+        max-width: 1200px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: flex-start;
         flex-wrap: wrap;
+        margin: 0 auto;
+        padding: 0;
     }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="photo">
-    <div v-if="image" class="random__box">     
+    <div v-if="image" class="photo__box">     
       <b-card
         :header="getAuthor"
         header-tag="header"
@@ -12,7 +12,7 @@
         footer-bg-variant="dark"
         footer-text-variant="white"
        >
-      <b-card-img :src="image.urls.small"></b-card-img>
+      <b-card-img :src="image.urls.small" class="photo__img"></b-card-img>
         <button class="random__download"><a class="random__link" :href="getDownload" target="_blank">Download</a></button>
       </b-card>
     </div>
@@ -53,5 +53,20 @@ export default {
 @import "../scss/_variable.scss";
 @import "../scss/_mixins.scss";
 
+.photo {
+   flex: 1 1 290px;
+   margin: 0 1rem 1rem;
 
+   &__box {
+    width: 100%;
+    margin: 0 auto;
+    font-family: $text_font;
+    font-size: .9em;
+  }
+
+  &__img {
+    height: 25rem;
+    object-fit: cover;
+  }
+}
 </style>
