@@ -5,7 +5,7 @@
     <input class="random__input" 
       v-model="query"
       type="text"
-      placeholder="city i.e."
+      placeholder="city"
       @keyup.enter="searchPhoto"
       autofocus />
     <button type="button" class="random__btn" @click.prevent="searchPhoto">
@@ -77,6 +77,7 @@ export default {
       this.fetchImages()
         .then((response) => {
           this.unsplashData = response.data;
+          this.query = "";
         })
     },
 
@@ -134,6 +135,10 @@ export default {
 
     &:focus {
       outline: none;
+    }
+
+    &::placeholder {
+      color: lighten($gray, 50%);
     }
   } 
 

@@ -54,7 +54,7 @@ export default {
 @import "../scss/_mixins.scss";
 
 .photo {
-   flex: 1 1 29rem;
+   flex: 1 1 290px;
    margin: 0 1rem 1rem;
 
    &__box {

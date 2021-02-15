@@ -6,7 +6,7 @@
             v-model="query"
             type="text"
             @keyup.enter.prevent="searchPhoto"
-            placeholder="cat i.e."
+            placeholder="cat"
             autofocus />
         <button type="button" class="random__btn" @click.prevent="searchPhoto">Search</button>
         <ul class="all__photos">
