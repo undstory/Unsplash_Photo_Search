@@ -5,6 +5,7 @@
         <input class="random__input" 
             v-model="query"
             type="text"
+            @keyup.enter.prevent="searchPhoto"
             placeholder="cat i.e."
             autofocus />
         <button type="button" class="random__btn" @click.prevent="searchPhoto">Search</button>
@@ -32,17 +33,13 @@ export default {
             download_url: null
         }
     },
-    computed: {
-        imageUrl() {
-            if (this.images) return this.images.urls.small;
-                return null;
-        },
-    },
+   
     methods: {
         searchPhoto() {
             this.fetchImages()
             .then((response) => {
             this.images = response.data.results;
+            this.query = "";
             })  
         },
 

@@ -1,8 +1,8 @@
 <template>
     <div class="title__container">
         <h1 class="title__header">Photos from unsplash.com</h1>
-        <button class="title__btn"><router-link to="/randomphotos" class="title__link">Search random photo</router-link></button>
-        <button class="title__btn"><router-link to="/allphotos" class="title__link">Search photos</router-link></button>
+        <router-link to="/randomphotos" class="title__link"><button class="title__btn">Search random photo</button></router-link>
+        <router-link to="/allphotos" class="title__link"><button class="title__btn">Search photos</button></router-link>
       
         <footer class="title__footer">
             <p>Design and code by undstory 2021. The photo comes from unsplash.com</p>
@@ -14,8 +14,6 @@
 <script>
 export default {
     name: 'Home',
- 
- 
   }
 
 </script>

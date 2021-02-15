@@ -162,5 +162,33 @@ export default {
   }
 }
 
+@media all and (max-width: 960px) {
+  .random {
+    &__box {
+      width: 70%;
+    }
+  }
+}
+
+@media all and (max-width: 575px) {
+  .random {
+    &__box {
+      width: 80%;
+    }
+
+    &__title {
+      font-size: 2em;
+    }
+
+    &__download {
+      min-width: 10rem;
+    }
+
+    &__input {
+      width: 15rem;
+    }
+  }
+}
+
 
 </style>
